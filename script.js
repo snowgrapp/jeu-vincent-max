@@ -82,4 +82,9 @@ window.onload = function () {
   setTimeout(startFallingAnimation, 200);
 
   window.onresize = updatePlayerPosition;
+
+  function gameLoop() {
+    return;
+  }
+
 };
