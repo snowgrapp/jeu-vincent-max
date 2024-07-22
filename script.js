@@ -1,4 +1,6 @@
 window.onload = function () {
+  // cela ne doit plus exister il faut creer une fonction game loop /!\ IMPORTANT
+  // bien gerer ces variable pour que tout correspondent !!
   const player = document.querySelector(".player");
   const ground = document.querySelector(".ground");
   const container = document.querySelector(".container");
@@ -84,7 +86,7 @@ window.onload = function () {
   window.onresize = updatePlayerPosition;
 
   function gameLoop() {
+    // utiliser cette fonction pour la boucle de jeu
     return;
   }
-
 };
