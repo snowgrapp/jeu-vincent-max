@@ -1,0 +1,27 @@
+body{
+    background: black;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.container{
+    color: white;
+    position: relative;
+    height: 100vh;
+}
+
+
+.player{
+    width: 30px;
+    height: 30px;
+    background-color: white;
+ 
+   
+}
+
+.ground{
+    border: 1px solid white;
+    width: 70%;
+   
+}
