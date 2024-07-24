@@ -1,27 +1,30 @@
-body{
-    background: black;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+body {
+  background: black;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-.container{
-    color: white;
-    position: relative;
-    height: 100vh;
+.container {
+  color: white;
+  position: relative;
+  height: 100vh;
+
+  background-image: url("assets/decor.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; 
+  width: 100%; 
+  height: 100vh;
 }
 
-
-.player{
-    width: 30px;
-    height: 30px;
-    background-color: white;
- 
-   
+.player {
+  width: 30px;
+  height: 30px;
+  background-color: white;
 }
 
-.ground{
-    border: 1px solid white;
-    width: 100%;
-   
+.ground {
+  border: 1px solid white;
+  width: 100%;
 }

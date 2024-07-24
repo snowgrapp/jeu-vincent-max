@@ -1,92 +1,92 @@
-window.onload = function () {
-  // cela ne doit plus exister il faut creer une fonction game loop /!\ IMPORTANT
-  // bien gerer ces variable pour que tout correspondent !!
-  const player = document.querySelector(".player");
-  const ground = document.querySelector(".ground");
-  const container = document.querySelector(".container");
+const player = document.querySelector(".player");
+const ground = document.querySelector(".ground");
+const container = document.querySelector(".container");
 
-  const playerHeight = player.getBoundingClientRect().height;
-  const groundHeight = ground.getBoundingClientRect().height;
+const playerHeight = player.getBoundingClientRect().height;
+const groundHeight = ground.getBoundingClientRect().height;
+const containerHeight = container.clientHeight;
+const playerWidth = player.getBoundingClientRect().width;
+
+let playerTop = 0;
+let playerLeft = 0;
+let isJumping = false;
+
+function updatePlayerPosition() {
   const containerHeight = container.clientHeight;
-  const playerWidth = player.getBoundingClientRect().width;
+  const groundTop = containerHeight - groundHeight;
 
-  let playerTop = 0;
-  let playerLeft = 0;
-  let isJumping = false;
+  ground.style.position = "absolute";
+  ground.style.top = `${groundTop}px`;
 
-  function updatePlayerPosition() {
-    const containerHeight = container.clientHeight;
-    const groundTop = containerHeight - groundHeight;
+  player.style.position = "absolute";
+  player.style.top = `${playerTop}px`;
+  player.style.left = `${playerLeft}px`;
+}
 
-    ground.style.position = "absolute";
-    ground.style.top = `${groundTop}px`;
+////// GRAVITÉ ////////////
+function startFallingAnimation() {
+  const fallDistance = containerHeight - groundHeight - playerHeight;
+  player.style.transition = "top 2s ease-in";
+  player.style.top = `${fallDistance}px`;
+  playerTop = fallDistance;
+}
+///////////////////////////////
 
-    player.style.position = "absolute";
+////// AVANCER RECULER ///////
+function movePlayer(left, right) {
+  playerLeft += left;
+  playerTop += right;
+  player.style.left = `${playerLeft}px`;
+  player.style.top = `${playerTop}px`;
+}
+///////////////////////////////
+
+///// CONDITION POUR GAUCHE OU DROITE /////
+document.addEventListener("keydown", (event) => {
+  const key = event.key;
+  switch (key) {
+    case "ArrowLeft":
+      movePlayer(-10, 0);
+      break;
+    case "ArrowRight":
+      movePlayer(10, 0);
+      break;
+    case " ":
+      jump();
+      break;
+  }
+});
+/////////////////////////////////////
+
+//////SAUTER///////
+function jump() {
+  if (isJumping) return;
+  isJumping = true;
+  let jumpHeight = 200;
+  player.style.transition = "top 0.5s ease-out";
+  player.style.top = `${playerTop - jumpHeight}px`;
+
+  setTimeout(() => {
+    player.style.transition = "top 0.5s ease-in";
     player.style.top = `${playerTop}px`;
-    player.style.left = `${playerLeft}px`;
-  }
-
-  ////// GRAVITÉ ////////////
-  function startFallingAnimation() {
-    const fallDistance = containerHeight - groundHeight - playerHeight;
-    player.style.transition = "top 2s ease-in";
-    player.style.top = `${fallDistance}px`;
-    playerTop = fallDistance;
-  }
-  ///////////////////////////////
-
-  ////// AVANCER RECULER ///////
-  function movePlayer(left, right) {
-    playerLeft += left;
-    playerTop += right;
-    player.style.left = `${playerLeft}px`;
-    player.style.top = `${playerTop}px`;
-  }
-  ///////////////////////////////
-
-  ///// CONDITION POUR GAUCHE OU DROITE /////
-  document.addEventListener("keydown", (event) => {
-    const key = event.key;
-    switch (key) {
-      case "ArrowLeft":
-        movePlayer(-10, 0);
-        break;
-      case "ArrowRight":
-        movePlayer(10, 0);
-        break;
-      case " ":
-        jump();
-        break;
-    }
-  });
-  /////////////////////////////////////
-
-  //////SAUTER///////
-  function jump() {
-    if (isJumping) return;
-    isJumping = true;
-    let jumpHeight = 200;
-    player.style.transition = "top 0.5s ease-out";
-    player.style.top = `${playerTop - jumpHeight}px`;
-
     setTimeout(() => {
-      player.style.transition = "top 0.5s ease-in";
-      player.style.top = `${playerTop}px`;
-      setTimeout(() => {
-        isJumping = false;
-      }, 500);
+      isJumping = false;
     }, 500);
-  }
-  ////////////////////////////////
+  }, 500);
+}
+////////////////////////////////
 
+updatePlayerPosition();
+
+setTimeout(startFallingAnimation, 200);
+
+window.onresize = updatePlayerPosition;
+
+function gameLoop() {
+  movePlayer(left, right);
+  jump();
+  startFallingAnimation();
   updatePlayerPosition();
+}
 
-  setTimeout(startFallingAnimation, 200);
-
-  window.onresize = updatePlayerPosition;
-
-  function gameLoop() {
-    // utiliser cette fonction pour la boucle de jeu
-    return;
-  }
-};
+gameLoop();
