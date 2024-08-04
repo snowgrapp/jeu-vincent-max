@@ -30,6 +30,9 @@ function startFallingAnimation() {
   player.style.top = `${fallDistance}px`;
   playerTop = fallDistance;
 }
+
+
+
 ///////////////////////////////
 
 ////// AVANCER RECULER ///////

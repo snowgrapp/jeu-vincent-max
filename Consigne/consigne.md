@@ -1,12 +1,3 @@
-C'est ici que se trouve tout les nouvelle consigne que je vais te donner comme ca tu n'aura plus besoin de les noter. 
-
-
-Consigne de la semaine :
-
-- gestion de t'es variables et verifier si tu ne les a pas ecrites plusieur fois pour la meme utilisation ( me demander si tu na pas tout compris )
-
-- reussir a faire marche le jeux avec la fonction gameLoop() C'est ok 
-
 
 Nouvelle consigne: 
 
@@ -17,9 +8,9 @@ Nouvelle consigne:
 - on va separer les fonction et tout decomposer. 
 
 
-- essaye de faire marcher ton background. 
+- essaye de faire marcher ton background. ok
 
-- trouve des sprite qui te plaise. 
+- trouve des sprite qui te plaise. ok
 
 - creation du systeme de vie avec la barre de vie 
 

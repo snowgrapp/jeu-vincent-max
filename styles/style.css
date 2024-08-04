@@ -9,7 +9,7 @@ body {
   color: white;
   position: relative;
   height: 100vh;
-  background-image: url("assets/decor.gif");
+  background-image: url("/assets/map.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center; 
@@ -19,11 +19,36 @@ body {
 
 .player {
   width: 30px;
-  height: 30px;
-  background-color: white;
+  height: 120px;
+  /*background-color: white;*/
+  background-image: url('/assets/perso.png');
+  background-position: 0 0;
+  background-size: 256px 64px; /* Taille totale de la feuille de sprites */
 }
 
 .ground {
-  border: 1px solid white;
+  border: 1px solid transparent;
   width: 100%;
+}
+
+
+.life{
+  width: 50%;
+  height: 20px;
+  border-radius: 30px;
+  color: white;
+  background-color: red;
+  position: fixed;
+}
+
+.opponent{
+  width: 30px;
+  height: 30px;
+  /*background-color: white;*/
+  left: 90%;
+  position: relative;
+  background-image: url('/assets/fighter.png');
+  background-position: 0 0;
+  background-size: 256px 64px; /* Taille totale de la feuille de sprites */
+
 }
