@@ -11,6 +11,9 @@ let playerTop = 0;
 let playerLeft = 0;
 let isJumping = false;
 
+let left = 0;
+let right = 0;
+
 function updatePlayerPosition() {
   const containerHeight = container.clientHeight;
   const groundTop = containerHeight - groundHeight;
@@ -30,8 +33,6 @@ function startFallingAnimation() {
   player.style.top = `${fallDistance}px`;
   playerTop = fallDistance;
 }
-
-
 
 ///////////////////////////////
 
