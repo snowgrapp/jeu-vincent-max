@@ -18,17 +18,22 @@ body {
 }
 
 .player {
-  width: 30px;
-  height: 120px;
+  width: 200px;
+  height: 200px;
   /*background-color: white;*/
-  background-image: url('/assets/perso.png');
+  background-image: url('/assets/player/Idle.png');
   background-position: 0 0;
-  background-size: 256px 64px; /* Taille totale de la feuille de sprites */
+  background-repeat: no-repeat;
+  background-size:cover;
 }
 
 .ground {
-  border: 1px solid transparent;
+height: 2px;
+background: red;
+left: 0;
   width: 100%;
+  position: absolute;
+  bottom: 20%;
 }
 
 
@@ -42,13 +47,14 @@ body {
 }
 
 .opponent{
-  width: 30px;
-  height: 30px;
+  width: 200px;
+  height: 200px;
   /*background-color: white;*/
   left: 90%;
   position: relative;
-  background-image: url('/assets/fighter.png');
+  background-image: url('/assets/ennemy/Idle.png');
   background-position: 0 0;
-  background-size: 256px 64px; /* Taille totale de la feuille de sprites */
+  background-repeat: no-repeat;
+  background-size:cover;
 
 }
