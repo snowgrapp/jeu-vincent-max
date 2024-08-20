@@ -12,49 +12,51 @@ body {
   background-image: url("/assets/map.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center; 
-  width: 100%; 
+  background-position: center;
+  width: 100%;
   height: 100vh;
 }
 
-.player {
-  width: 200px;
-  height: 200px;
-  /*background-color: white;*/
-  background-image: url('/assets/player/Idle.png');
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  background-size:cover;
-}
 
 .ground {
-height: 2px;
-background: red;
-left: 0;
+  height: 2px;
+  background: red;
+  left: 0;
   width: 100%;
   position: absolute;
   bottom: 20%;
 }
 
 
-.life{
+
+.player {
+  width: 200px;
+  height: 200px;
+  /*background-color: white;*/
+  background-image: url("/assets/characters/perso/Idle.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.opponent {
+  width: 200px;
+  height: 200px;
+  /*background-color: white;*/
+  left: 90%;
+  position: relative;
+  background-image: url("/assets/characters/npc/Idle.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.life {
   width: 50%;
   height: 20px;
   border-radius: 30px;
   color: white;
   background-color: red;
   position: fixed;
-}
-
-.opponent{
-  width: 200px;
-  height: 200px;
-  /*background-color: white;*/
-  left: 90%;
-  position: relative;
-  background-image: url('/assets/ennemy/Idle.png');
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  background-size:cover;
-
 }
