@@ -9,17 +9,18 @@ const playerWidth = player.getBoundingClientRect().width;
 
 let playerTop = 0;
 let playerLeft = 0;
+let left = 0
+let right = 0
 let isJumping = false;
 
-let left = 0;
-let right = 0;
+
 
 function updatePlayerPosition() {
   const containerHeight = container.clientHeight;
-  const groundTop = containerHeight - groundHeight;
+  // const groundTop = containerHeight - groundHeight;
 
   ground.style.position = "absolute";
-  ground.style.top = `${groundTop}px`;
+  // ground.style.top = `${groundTop}px`;
 
   player.style.position = "absolute";
   player.style.top = `${playerTop}px`;
@@ -32,6 +33,26 @@ function startFallingAnimation() {
   player.style.transition = "top 2s ease-in";
   player.style.top = `${fallDistance}px`;
   playerTop = fallDistance;
+}
+
+
+function checkCollision() {
+  const playerRect = player.getBoundingClientRect();
+  const groundRect = ground.getBoundingClientRect();
+  if (playerRect.bottom >= groundRect.top) {
+    playerTop = groundRect.top - playerHeight; // Ajuster la position du player au-dessus du ground
+    player.style.top = `${playerTop}px`;
+    console.log("colision")
+
+    // Réinitialiser le mouvement vertical (saute ou tombe)
+    isJumping = false;
+
+    // Ajuster le player à la hauteur du sol
+    player.style.transition = "none"; // Désactiver la transition pour un ajustement instantané
+    setTimeout(() => {
+      player.style.transition = "top 0.5s ease-out";
+    }, 0);
+  }
 }
 
 ///////////////////////////////
@@ -48,16 +69,13 @@ function movePlayer(left, right) {
 ///// CONDITION POUR GAUCHE OU DROITE /////
 document.addEventListener("keydown", (event) => {
   const key = event.key;
-  switch (key) {
-    case "ArrowLeft":
-      movePlayer(-10, 0);
-      break;
-    case "ArrowRight":
-      movePlayer(10, 0);
-      break;
-    case " ":
-      jump();
-      break;
+
+  if (key === "ArrowLeft") {
+    movePlayer(-10, 0);
+  } else if (key === "ArrowRight") {
+    movePlayer(10, 0);
+  } else if (key === " ") {
+    jump();
   }
 });
 /////////////////////////////////////
@@ -91,6 +109,9 @@ function gameLoop() {
   jump();
   startFallingAnimation();
   updatePlayerPosition();
+  checkCollision();
 }
 
 gameLoop();
+
+
